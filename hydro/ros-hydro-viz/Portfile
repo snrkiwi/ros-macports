@@ -46,6 +46,7 @@ build {
      set env(OpenCV_DIR) "${prefix}/lib/cmake/"
      set env(CMAKE_PREFIX_PATH) "${prefix}:${destroot}/opt/local/lib"
      set env(PYTHONPATH) "${prefix}/lib/python2.7/site-packages"
+     set env{QTDIR} "${prefix}/libexec/qt4"
 
      # Force catkin to use chosen compiler
      set env(CC) "${configure.cc}"
@@ -56,6 +57,7 @@ build {
           --source ${worksrcpath} \
           --build ${worksrcpath}/build_isolated \
           --devel ${worksrcpath}/devel_isolated \
+          -DQTDIR=${prefix}/libexec/qt4 \
           -DCMAKE_SKIP_RPATH:BOOL=OFF \
           -DCMAKE_INSTALL_NAME_DIR:STRING=${prefix}/lib \
           -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=ON \
